@@ -418,13 +418,7 @@ experium/
 
 ---
 
-## 👥 Team
 
-| Role | Name |
-|---|---|
-| 🧑‍💻 Team Leader | **Mayank Sharma** |
-
-Built for the **Hackathon**: Technical track (Blockchain / Web3 Infrastructure).
 
 ---
 
