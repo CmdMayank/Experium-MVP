@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experium - Enterprise Asset & Identity Management</title>
+    <meta name="description" content="Manage Decentralized Identities and Soulbound Assets efficiently on Sepolia or in Demo mode.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="toast-container"></div>
+    <header class="glass-header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <h1>Experium</h1>
+            </div>
+            <div class="header-controls">
+                <div class="mode-toggle">
+                    <span class="mode-label">Demo</span>
+                    <label class="switch">
+                        <input type="checkbox" id="mode-switch">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="mode-label">Live</span>
+                </div>
+                <button id="connect-btn" class="btn primary-btn disabled">Demo Wallet Connected</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="grid">
+            <div class="col">
+                <!-- Identity Section -->
+                <section class="card glass-card">
+                    <h2>Identity Management (DID)</h2>
+                    <div class="action-group">
+                        <button id="btn-create-did" class="btn action-btn">Create DID</button>
+                    </div>
+                    <div class="action-group form-group mt-4">
+                        <input type="text" id="input-did-address" placeholder="Enter Wallet Address 0x...">
+                        <button id="btn-read-did" class="btn action-btn outline-btn">Check DID</button>
+                    </div>
+                    <div id="did-result" class="result-box hidden"></div>
+                </section>
+
+                <!-- Asset Section -->
+                <section class="card glass-card">
+                    <h2>Asset Minting (NFT)</h2>
+                    <div class="form-group vertical">
+                        <input type="text" id="mint-to" placeholder="Recipient Address 0x...">
+                        <input type="text" id="mint-uri" placeholder="Asset URI (e.g. ipfs://...)">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="mint-sb" checked> Soulbound (Non-transferable)
+                        </label>
+                        <button id="btn-mint" class="btn action-btn">Mint Asset</button>
+                    </div>
+                    
+                    <div class="action-group form-group mt-4">
+                        <input type="number" id="input-token-id" placeholder="Token ID (e.g. 1)">
+                        <button id="btn-read-asset" class="btn action-btn outline-btn">Asset Info</button>
+                    </div>
+                    <div id="asset-result" class="result-box hidden"></div>
+                </section>
+
+                <!-- Access Control Section -->
+                <section class="card glass-card">
+                    <h2>Access Control</h2>
+                    <div class="form-group vertical">
+                        <select id="role-select">
+                            <option value="MANAGER">MANAGER</option>
+                            <option value="AUDITOR">AUDITOR</option>
+                            <option value="DEFAULT_ADMIN_ROLE">ADMIN</option>
+                        </select>
+                        <input type="text" id="role-address" placeholder="Target Address 0x...">
+                        <div class="action-group">
+                            <button id="btn-grant-role" class="btn action-btn">Grant Role</button>
+                            <button id="btn-revoke-role" class="btn action-btn outline-btn">Revoke Role</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col">
+                <!-- Audit Log Section -->
+                <section class="card glass-card full-height">
+                    <div class="card-header">
+                        <h2>Audit Log</h2>
+                        <button id="btn-refresh-logs" class="btn icon-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"></path><path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path><path d="M3 22v-6h6"></path><path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path></svg>
+                        </button>
+                    </div>
+                    <div id="audit-logs" class="log-container">
+                        <div class="log-placeholder">No events found.</div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Ethers.js v6 CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.11.1/ethers.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
